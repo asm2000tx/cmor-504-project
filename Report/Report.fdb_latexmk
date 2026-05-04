@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1777872521.30343 "/Users/axelsm/Desktop/Spring26/CMOR_504/Project/Report/Report.tex" "Report.pdf" "Report" 1777872522.05363 0
-  "/Users/axelsm/Desktop/Spring26/CMOR_504/Project/Report/Report.tex" 1777872520.90079 3338 9d9751c9d356668935f224969c547382 ""
+["pdflatex"] 1777909054.5012 "/Users/axelsm/Desktop/Spring26/CMOR_504/Project/Report/Report.tex" "Report.pdf" "Report" 1777909055.36848 0
+  "/Users/axelsm/Desktop/Spring26/CMOR_504/Project/Report/Report.tex" 1777909054.97956 3851 b1352cade9ca68b318b8c69784788f3f ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -159,8 +159,10 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1718078807.99284 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1718078780 8221421 c79ee291b73b86b953527ab95d2c773a ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "Report.aux" 1777872521.97531 288 2c0bec1bfbf2b2e06833cb0c866d020d "pdflatex"
-  "Report.tex" 1777872520.90079 3338 9d9751c9d356668935f224969c547382 ""
+  "Images/branch_scheme.png" 1777907553.3529 155187 4bf41e66695ef125c52904650d3686f6 ""
+  "Images/local_comp_demo.png" 1777907542.07782 107706 bf34104dc2e495e627a1b15ad68aa687 ""
+  "Report.aux" 1777909055.31602 729 5f9329c49189a4e2dcb09ede0c859ef9 "pdflatex"
+  "Report.tex" 1777909054.97956 3851 b1352cade9ca68b318b8c69784788f3f ""
   (generated)
   "Report.aux"
   "Report.log"
