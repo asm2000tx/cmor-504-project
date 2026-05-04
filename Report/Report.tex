@@ -11,6 +11,7 @@
 \usepackage{centernot}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Page Layout and Formatting Packages
 \usepackage[a4paper, 
@@ -40,13 +41,16 @@
 \renewcommand{\headrulewidth}{0.5pt} % headline (line in header)
 \renewcommand{\footrulewidth}{0.5pt} % footline (line in footer) 
 
-\fancyfoot[L]{\textbf{Dr. Randy Dalvia}} 
+\fancyfoot[L]{\textbf{Dr. Randy L. Dalvia}} 
 \fancyfoot[C]{} 
 \fancyfoot[R]{\textbf{Page \thepage \text{} of \pageref*{LastPage}}}
 
 \title{
     \textbf{\Huge{CMOR 504 \\ Project Report}} \\ [0.5em] 
-    \Large \textit{\color{gray} Project Report for CMOR 504} \\[1em]
+    \Large {\color{gray} 
+        \textbf{Project Report} \\
+        \emph{Non-Isomorphic Local Complement Branch and Bound Scheme and its Applications to Graph Theory Fundamentals}
+    } \\[1em]
     \large{\textit{Version 1.0.0}}
 }
 \author{\LARGE{Axel Sanchez Moreno}}
@@ -73,6 +77,12 @@
 % Theorem:      colback=yellow!10!white, colframe=red!75!black, title=\Large \textbf{Theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom Commands
+\newcommand{\argmin}{\operatorname{argmin}}
+\newcommand{\feasible}{\operatorname{feasible}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 
 \maketitle
@@ -80,21 +90,20 @@
 \newpage
 
 \thispagestyle{empty} % Skip header and footer on this page
-\newpage
 
-\clearpage
-\thispagestyle{empty}
-\null
+\vspace*{\fill}
+\begin{center}
+    \Large \textbf{This Page is Intentionally Left Blank}
+\end{center}
+\vspace*{\fill}
 
 \clearpage
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-Text on the material goes here \ldots. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Text on the material goes here \ldots. 
 
