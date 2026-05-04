@@ -1,0 +1,101 @@
+% Theorem List - CMOR 537: Computer Assisted Algorithm Design for Optimization and Machine Learning
+\documentclass[12pt]{report} % or report, article, etc.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Math Packages
+\usepackage{amsfonts}
+\usepackage{amsmath}                     
+\usepackage{amssymb}                      
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{centernot}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page Layout and Formatting Packages
+\usepackage[a4paper, 
+            margin=0.75in, 
+            headheight=15pt, 
+            headsep=0.2in, 
+            footskip=1.5cm]{geometry} 
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{lastpage} % Added for page reference in footer
+\usepackage{tocloft} % For customizing ToC spacing
+\setlength{\cftbeforesecskip}{8pt} % Adjust spacing between section entries
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Header and Footer Configuration
+\pagestyle{fancy} 
+\fancyhead[L]{\textbf{CMOR 504 - Graph Theory}}
+\fancyhead[C]{}
+\fancyhead[R]{}
+
+\renewcommand{\headrulewidth}{0.5pt} % headline (line in header)
+\renewcommand{\footrulewidth}{0.5pt} % footline (line in footer) 
+
+\fancyfoot[L]{\textbf{Dr. Randy Dalvia}} 
+\fancyfoot[C]{} 
+\fancyfoot[R]{\textbf{Page \thepage \text{} of \pageref*{LastPage}}}
+
+\title{
+    \textbf{\Huge{CMOR 504 \\ Project Report}} \\ [0.5em] 
+    \Large \textit{\color{gray} Project Report for CMOR 504} \\[1em]
+    \large{\textit{Version 1.0.0}}
+}
+\author{\LARGE{Axel Sanchez Moreno}}
+\date{Last Updated: \\ \vspace{0.25em} \large{\textit{\today}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Font Configuration
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{titlesec}
+\titleformat*{\section}{\huge\bfseries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Format Packages
+\setlength{\parindent}{0pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Color labeling
+% Remark/Note:  colback=yellow!10!white,colframe=orange!75!black,title = \Large \textbf{Remark}
+% Definition:   colback=teal!10!white,colframe=blue!75!black,title = \Large \textbf{Definition}
+% Theorem:      colback=yellow!10!white, colframe=red!75!black, title=\Large \textbf{Theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\thispagestyle{empty} % Skip header and footer on this page
+\newpage
+
+\clearpage
+\thispagestyle{empty}
+\null
+
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+Text on the material goes here \ldots. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Text on the material goes here \ldots. 
+
+\end{document}
