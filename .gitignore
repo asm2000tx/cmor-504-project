@@ -1,10 +1,6 @@
-# Report/Report.fdb_latexmk
-# Report/Report.fls
-# Report/Report.log
-# Report/Report.synctex.gz
-# Report/Report.aux
-# Report/.DS_Store
-
-# Code/__pycache__
-
-# .DS_Store
+Report/Report.fdb_latexmk
+Report/Report.fls
+Report/Report.log
+Report/Report.synctex.gz
+Report/Report.aux
+Report/.DS_Store
