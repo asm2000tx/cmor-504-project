@@ -9,8 +9,7 @@
 \usepackage{amsthm}
 \usepackage{mathtools}
 \usepackage{centernot}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%s
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Page Layout and Formatting Packages
@@ -113,11 +112,64 @@
 
 \subsection*{Introduction}
 
-Graphs act as a source of understanding of\cite{Adcock_2020}
+% Graph states in \cite{Vesperini_2024} act as a connection between qubits and both computing and communication. Recent work from \cite{Adcock_2020} bridges the connection via local complements on graph states. Despite the process of computing the local complement of a graph 
+% to be simple, the challenge can become when a larger number of qubits that have dense connections between eachother and, as a result, to collect results on such unique local complemetary graphs. Hence, we propose a recursive algorithm that finds all non-isomorphic graphs to the original graph state. 
+
+Graph states in \cite{Vesperini_2024} connect qubits and both their computation and communication. One such focus comes from \cite{Adcock_2020} on the use of local complements as a transformation on the original stated graph. Despite the local complement operation being straightforward,
+finding all possible combinations of such local complements can be challenging when the node count is large or the graph is densely connected. In fact, it can be redundant to end up seeing graphs that are isomorphic to ones already seen from preivous iterations. This results in a difficulty in collecting 
+the information of each individual graph. These include the following: 
+\begin{enumerate}[label=(\roman*), font=\itshape]
+    \item \emph{Domination Number}
+    \item \emph{Maximum Clique}
+    \item \emph{Maximum Stable/Independent Set}
+    \item \emph{Matchings}
+    \item \emph{Perfrect Matchings}
+\end{enumerate}
+
+Hence, we propose a recursive algorithm that finds all non-isomorphic graphs to the original graph state. We'll proceed as follows: 
+\begin{enumerate}[label=(\roman*), font=\itshape]
+    \item \textbf{Preliminary Material}: Reviewing the terminology and concepts to construct the recursive algorithm and the data to be collected on each graph. 
+    \item \textbf{Methodology and Results}: Defining the recursive algorithm and presenting any results collected.  
+    \item \textbf{Conclusions}: Summarize what's been done throughout this report. 
+    \item \textbf{Limitations, Discussions, and Future Work}: Discuss the limitations and potential expansions to be performed on this report. 
+\end{enumerate}
 
 \subsection*{Preliminary Material}
 
-Text on the preliminary material goes here \ldots.
+A \textbf{graph} $G$ is an ordered pair, expressed as $G = (V, E)$ where $V$ and $E$ are the set of nodes and edges, respectively. Additionally, we assume that $|V|, |E| < \infty$. The \textbf{neighborhood} of a vertex $\mathbf{v} \in V$, denoted $N(v)$, is the set of all nodes $\mathbf{u} \in V$ such that $\mathbf{u},\mathbf{v} \in E$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The following definitions will be referenced from \cite{hicks2006branch, diestel2017graph, conforti2014integer}.
+
+\begin{tcolorbox}[colback=orange!10!white, colframe=orange!75!black, title=\textbf{Definition}]
+    Let the graph $G = (V,E)$ be given. 
+    \begin{enumerate}[label=(\alph*), font=\itshape]
+        \item An \textbf{independent/stable set} is any collection of vertices $S \subseteq V$ such that no two vertices in $S$ share an edge. 
+        \item The \textbf{maximum independent/stable set} problem finds the largest independent set $S \subseteq V$ to the graph $G$.
+        \item A \textbf{clique} is a sest of vertices $K \subseteq V$ such that all pairs of vertiecs in $K$ are adjacent to eachother.  
+        \item The \textbf{dominating set} is a subset $T \subseteq V$ such that each vertex $G$ either belongs to $G$ or is adjacent to some element of $S$. 
+        \item A \textbf{matching} is a set $M \subseteq E$ of pairwise disjoint edges. 
+        \item A \textbf{perfect matching} is a matching that covers each node in $G$. 
+    \end{enumerate}
+\end{tcolorbox}
+
+We'll also be using the following definition from \cite{Adcock_2020}. 
+
+\begin{tcolorbox}[colback=orange!10!white, colframe=orange!75!black, title=\textbf{Definition}]
+    Let the graph $G = (V,E)$ be given. 
+\end{tcolorbox}
+
+% You’ll want to define the core objects and properties you use later:
+% Graphs, vertices, edges, neighborhoods
+% Graph isomorphism (this is central to your goal)
+% Standard notation G=(V,E)
+% Any invariants or properties you’ll analyze (e.g., stable sets, domination number, matchings, perfect matchings)
+% The key here is clarity: make sure a reader can follow what “non-isomorphic” and “derived graphs” mean in your context.
+
+% Text on the preliminary material goes here \ldots.
 
 % Images of overview of local complement and objective of paper.  
 
