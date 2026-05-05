@@ -27,6 +27,8 @@
 \usepackage{tcolorbox}
 \usepackage{lastpage} % Added for page reference in footer
 \usepackage{tocloft} % For customizing ToC spacing
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \setlength{\cftbeforesecskip}{8pt} % Adjust spacing between section entries
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -136,64 +138,125 @@ Hence, we propose a recursive algorithm that finds all non-isomorphic graphs to 
 
 \subsection*{Preliminary Material}
 
-A \textbf{graph} $G$ is an ordered pair, expressed as $G = (V, E)$ where $V$ and $E$ are the set of nodes and edges, respectively. Additionally, we assume that $|V|, |E| < \infty$. The \textbf{neighborhood} of a vertex $\mathbf{v} \in V$, denoted $N(v)$, is the set of all nodes $\mathbf{u} \in V$ such that $\mathbf{u},\mathbf{v} \in E$. 
+We start by defining the following terms. 
+
+\begin{tcolorbox}[colback=orange!10!white, colframe=orange!75!black, title=\textbf{Definition}]
+    A \textbf{graph} $\mathbf{G}$ is an ordered pair, defined as $G = (V, E)$, where $V$ and $E$ denote the vertices (or nodes) and edges, respectively. The neighborhood
+    of a vertex $\mathbf{v} \in V$, denoted $N_{G}(\mathbf{v})$, is the set of vertices adjacent to $\mathbf{v}$. 
+\end{tcolorbox}
+
+We'll suppose for this report that $G$ is simple and $V$ and $E$ are finite. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The following definitions will be referenced from \cite{conforti2014integer, diestel2017graph, hicks2006branch}.
+The following definitions will be referenced from \cite{Adcock_2020, conforti2014integer, diestel2017graph, hicks2006branch}.
 
 \begin{tcolorbox}[colback=orange!10!white, colframe=orange!75!black, title=\textbf{Definition}]
     Let the graph $G = (V,E)$ be given. 
-    \begin{enumerate}[label=(\alph*), font=\itshape]
+    \begin{enumerate}[label=(\roman*), font=\itshape]
         \item An \textbf{independent/stable set} is any collection of vertices $S \subseteq V$ such that no two vertices in $S$ share an edge. 
         \item The \textbf{maximum independent/stable set} problem finds the largest independent set $S \subseteq V$ to the graph $G$.
         \item A \textbf{clique} is a sest of vertices $K \subseteq V$ such that all pairs of vertiecs in $K$ are adjacent to eachother.  
+        \item The \textbf{maximum clique} problem finds the largest clique $K \subseteq V$ to the graph $G$. 
         \item The \textbf{dominating set} is a subset $T \subseteq V$ such that each vertex $G$ either belongs to $G$ or is adjacent to some element of $S$. 
         \item A \textbf{matching} is a set $M \subseteq E$ of pairwise disjoint edges. 
         \item A \textbf{perfect matching} is a matching that covers each node in $G$. 
     \end{enumerate}
+    
+    Let the graph $H = (V',E')$ be given. Additionally, let $\psi_G$ and $\psi_H$ denote the incidence functions that assigns edges to an unordered pair of vertices to both $G$ and $H$, respectively. 
+    
+    \vspace{1em}
+    
+    The graph $G$ is said to be \textbf{isomorphic} to $H$, denoted $G \cong H$, if there exists a bijective functions $f_{V}: V \to V'$ and $f_{E}: E \to E'$ such that  
+    \begin{equation*}
+        \psi_G(\mathbf{e}) = \mathbf{u}\mathbf{v} \text{ if and only if } \psi_{H}(f_{E}(\mathbf{e})) = f_{V}(\mathbf{u})f_{V}(\mathbf{v}).
+    \end{equation*}
+
+    The \textbf{local complement} of a graph on a vertex $\mathbf{v} \in V$, denoted $G_{LC} = (V, E')$, 
+    is the complement of $N_{G}(\mathbf{v})$ where  
+    \begin{equation*}
+        E' \, \dot{=} \, (E \cup K_{N_{G}(\mathbf{v})}) \setminus (E \cap K_{N_{G}(\mathbf{v})}) = E \, \Delta \, K_{N_{G}(\mathbf{v})}.
+    \end{equation*}
+    See Figure \ref{fig:lc-demo} for reference.
 \end{tcolorbox}
 
-We'll also be using the following definition from \cite{Adcock_2020}. 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Images/local_comp_demo.png}
+    \caption{A guide on how the local complement of a graph yields the output graph.}
+    \label{fig:lc-demo}
+\end{figure}
 
-\begin{tcolorbox}[colback=orange!10!white, colframe=orange!75!black, title=\textbf{Definition}]
-    Let the graph $G = (V,E)$ be given. 
-\end{tcolorbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% You’ll want to define the core objects and properties you use later:
-% Graphs, vertices, edges, neighborhoods
-% Graph isomorphism (this is central to your goal)
-% Standard notation G=(V,E)
-% Any invariants or properties you’ll analyze (e.g., stable sets, domination number, matchings, perfect matchings)
-% The key here is clarity: make sure a reader can follow what “non-isomorphic” and “derived graphs” mean in your context.
+\subsection*{Methodology}
 
-% Text on the preliminary material goes here \ldots.
+Our work on finding all combinations of local complements on a graph $G$ will be done using a branch-and-bound scheme. This idea was inspired by \cite{hicks2006branch} with the scheme being used to 
+find the maximum stable/independent set and maximum cliques. We'll instead approach the problem by finding all possible combinations of such local complements (see Figure \ref{fig:branch-scheme} for reference). 
 
-% Images of overview of local complement and objective of paper.  
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/branch_scheme.png}
+    \caption{Branch-and-bound scheme overview. Note that the graph eventually returns to the initial graph state, though it may be isomorphic to a previously seen graph.}
+    \label{fig:branch-scheme}
+\end{figure}
 
-% \begin{figure}[h!]
-%     \centering
-%     \includegraphics[width=0.8\textwidth]{Images/local_comp_demo.png}
-%     \caption{Local Complement Overivew}
-%     \label{fig:lc-demo}
-% \end{figure}
+In constructing our algorithm, we define the function \texttt{isomorphic\_status}($G$) where $G$ is a checked if it's isomorphic to the previous seen graphs in \texttt{graph\_list}. Given this, we define the following function \texttt{gen\_orbits(G, lvl)} where \texttt{lvl} is the recursion level index.
 
-% \begin{figure}[h!]
-%     \centering
-%     \includegraphics[width=0.55\textwidth]{Images/branch_scheme.png}
-%     \caption{Branch-and-bound scheme overview.}
-%     \label{fig:branch-scheme}
-% \end{figure}
+\begin{algorithm}
+\caption{\texttt{gen\_orbits($G$, \texttt{lvl})}}\label{alg:nic-bb}
+\begin{algorithmic}
+\Require{Graph $G = (V, E)$, Recursion level index \texttt{lvl}}
+\Ensure{Set of all non-isomorphic graphs reachable via local complements}
+\If{\texttt{is\_isomorphic($G$)}} 
+    \State \texttt{return}
+\EndIf
+\State \texttt{graph\_list.append($G$)}
+\For {$\mathbf{v} \in V(G)$}
+    \If{$\left|N_{G}(\mathbf{v})\right| \leq 1$} 
+        \State \texttt{continue}
+    \EndIf
+    \State $G_{\texttt{new}} = \texttt{gen\_local\_complement}(G, N_{G}(\mathbf{v}))$
+    \State \texttt{gen\_orbits($G_{\texttt{new}}$, $\texttt{lvl}+1$)}
+\EndFor
+\end{algorithmic}
+\end{algorithm}
 
-\subsection*{Methodology and Results}
+\newpage 
 
-Text on the methodology and results goes here \ldots. 
+Once all the local complements of the original graph $G$ are collected, we continue to 
+collect the following information on each graph: 
+
+\begin{enumerate}[label=(\roman*), font=\itshape]
+    \item \textbf{Maximum Independent/Stable Set}
+    \item \textbf{Maximum Clique}
+    \item \textbf{Dominating Set}
+    \item \textbf{Matchings}
+    \item \textbf{Perfect Matchings}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Methodology}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \subsection*{Conclusions}
 
 Text on the conclusions material goes here \ldots. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection*{Limitations, Discussions, and Future Work}
 
