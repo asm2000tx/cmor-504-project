@@ -1,4 +1,3 @@
-% Theorem List - CMOR 537: Computer Assisted Algorithm Design for Optimization and Machine Learning
 \documentclass[12pt]{report} % or report, article, etc.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -109,7 +108,7 @@
 \begin{tcolorbox}[colback=orange!10!white, colframe=orange!75!black, title=\center \Large \textbf{Abstract}]
     Recent work in quantum computing focuses on understanding qubits in the lense of graph theory. One such operation includes the local complement. Despite its simple definiton, it can be become a redundant task if the graph is presumed to be dense and have local complements 
     that are isomorphic to previous graphs. We're focused on constructing a recursive algorithm that finds all non-isomorphic graphs from the initial-state graph. Given the final listing of all the non-isomorphic graphs, we'll proceed to quantify the various properties of each 
-    graph including power domination, maximum stable set, cliques, matchings, and perfect matchings. 
+    graph including maximum stable set, maximum cliques, matchings, and perfect matchings. 
 \end{tcolorbox}
 
 \subsection*{Introduction}
@@ -121,7 +120,6 @@ Graph states in \cite{Vesperini_2024} connect qubits and both their computation 
 finding all possible combinations of such local complements can be challenging when the node count is large or the graph is densely connected. In fact, it can be redundant to end up seeing graphs that are isomorphic to ones already seen from preivous iterations. This results in a difficulty in collecting 
 the information of each individual graph. These include the following: 
 \begin{enumerate}[label=(\roman*), font=\itshape]
-    \item \emph{Domination Number}
     \item \emph{Maximum Clique}
     \item \emph{Maximum Stable/Independent Set}
     \item \emph{Matchings}
@@ -160,7 +158,6 @@ The following definitions will be referenced from \cite{Adcock_2020, conforti201
         \item The \textbf{maximum independent/stable set} problem finds the largest independent set $S \subseteq V$ to the graph $G$.
         \item A \textbf{clique} is a sest of vertices $K \subseteq V$ such that all pairs of vertiecs in $K$ are adjacent to eachother.  
         \item The \textbf{maximum clique} problem finds the largest clique $K \subseteq V$ to the graph $G$. 
-        \item The \textbf{dominating set} is a subset $T \subseteq V$ such that each vertex $G$ either belongs to $G$ or is adjacent to some element of $S$. 
         \item A \textbf{matching} is a set $M \subseteq E$ of pairwise disjoint edges. 
         \item A \textbf{perfect matching} is a matching that covers each node in $G$. 
     \end{enumerate}
@@ -234,16 +231,58 @@ collect the following information on each graph:
 \begin{enumerate}[label=(\roman*), font=\itshape]
     \item \textbf{Maximum Independent/Stable Set}
     \item \textbf{Maximum Clique}
-    \item \textbf{Dominating Set}
     \item \textbf{Matchings}
     \item \textbf{Perfect Matchings}
 \end{enumerate}
+
+For these results, we use relaxed versions of their integer program formulations. Supposing the graph $G = (V, E)$ is given, 
+we have the following linear programs: 
+
+\vspace{1em}
+
+\textbf{Maximum Independent/Stable Set}:
+\[
+    \begin{aligned}
+        \max \quad & \sum_{\mathbf{v} \in V} x_\mathbf{v} \\
+        \text{s.t.} \quad & x_\mathbf{u} + x_\mathbf{v} \le 1 && \forall\, \mathbf{u}\mathbf{v} \in E \\
+        & x_{\mathbf{v}} \geq 0 && \forall\, \mathbf{v} \in V
+    \end{aligned}
+\]
+\textbf{Maximum Clique}:
+\[
+    \begin{aligned}
+        \max \quad & \sum_{\mathbf{v} \in V} x_\mathbf{v} \\
+        \text{s.t.} \quad & x_\mathbf{u} + x_\mathbf{v} \le 1 && \forall\, \mathbf{u}\mathbf{v} \notin E \\
+        & x_{\mathbf{v}} \geq 0 && \forall\, \mathbf{v} \in V
+    \end{aligned}
+\]
+\textbf{Matchings}:
+\[
+    \begin{aligned}
+        \max \quad & \sum_{\mathbf{e} \in E} x_\mathbf{e} \\
+        \text{s.t.} \quad & \sum_{\mathbf{e} \in \delta(\mathbf{v})} x_\mathbf{e} \le 1 && \forall\, \mathbf{v} \in V \\
+        & x_{\mathbf{e}} \geq 0 && \forall\, \mathbf{e} \in E
+    \end{aligned}
+\]
+
+\textbf{Perfect Matchings}:
+\[
+    \begin{aligned}
+        \max \quad & \sum_{\mathbf{e} \in E} x_\mathbf{e} \\
+        \text{s.t.} \quad & \sum_{\mathbf{e} \in \delta(\mathbf{v})} x_\mathbf{e} = 1 && \forall\, \mathbf{v} \in V \\
+        & x_{\mathbf{e}} \geq 0 && \forall\, \mathbf{e} \in E
+    \end{aligned}
+\]
+
+Note that in both the linear programs for both matchings and perfect matchings, we let $\delta(\mathbf{v})$ denote the set of all edges $\mathbf{e} \in E$ that have $\mathbf{v}$ is an endpoint. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection*{Methodology}
+\subsection*{Computational Results}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage 

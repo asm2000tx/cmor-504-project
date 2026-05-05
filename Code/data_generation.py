@@ -6,9 +6,6 @@ from model_match_perf import perfect_match_model
 
 class result_generation:
     def __init__(self):
-        ## Power Domaination
-        self.domination_set = []
-
         ## Maximum Independence 
         self.mis_nodes = []
         self.mis_cost = []
@@ -25,10 +22,7 @@ class result_generation:
         self.clique_set = []
         self.clique_num = []
 
-    def networx_data_collection(self, G): 
-        self.domination_set.append(nx.dominating_set(G))    ## Domaination set
-
-    def gurobipy_data_collection(self, G):
+    def data_collection(self, G):
         mis_model = max_ind_set_model()                     ## Maximum independent set
         mis_model.optimize(G)
         mis_soln, _ = mis_model.opt_soln()
@@ -72,5 +66,4 @@ class result_generation:
         self.clique_set.append(clique_soln)
 
     def get_results(self):
-        return [self.mis_nodes, self.matching_edges, self.perfect_matching_num, 
-                self.perfect_matching_edges, self.clique_set]
+        return [self.mis_nodes, self.matching_edges, self.perfect_matching_edges, self.clique_set]

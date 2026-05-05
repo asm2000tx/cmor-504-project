@@ -38,10 +38,9 @@ def main() -> int:
 
     data_object = result_generation()
     for graph in graph_list:
-        data_object.networx_data_collection(graph)
-        data_object.gurobipy_data_collection(graph)
+        data_object.data_collection(graph)
 
-    # plot_graph.plot_results(graph, data_object)
+    plot_graph.plot_results(graph, data_object)
 
     return 0
 
