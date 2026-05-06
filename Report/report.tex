@@ -235,7 +235,7 @@ collect the following information on each graph:
     \item \textbf{Perfect Matchings}
 \end{enumerate}
 
-For these results, we use relaxed versions of their integer program formulations. Supposing the graph $G = (V, E)$ is given, 
+For these results, we use relaxed versions of their integer program formulations from \cite{conforti2014integer}. Supposing the graph $G = (V, E)$ is given, 
 we have the following linear programs: 
 
 \vspace{1em}
@@ -337,7 +337,7 @@ We share both the graph generated and it's corresponding results on the appearan
 \includegraphics[width=0.75\textwidth,height=0.12\textheight,keepaspectratio]{Images/plot-p85.png} \\
 \hline
 \end{tabular}
-\caption{Generated graphs and corresponding appearance-count plots and recursion execution for varying probabilities $p \sim \{0.25, 0.4, 0.55, 0.7, 0.85\}$.}
+\caption{Generated graphs and corresponding appearance-count plots and recursion execution for varying probabilities $p \sim \{0.25, 0.4, 0.55, 0.7, 0.85\}$. For probabilites $p = 0.25$ and $p = 0.85$, the blank plots come from the number of graphs being less than 10 as a result.}
 \label{tab:graphs_plots}
 \end{table}
 
@@ -407,6 +407,7 @@ Our work was limited to pure graph theory with almost no connection to quantum c
     \item Applying blossom inequalities to study how this affects the optimal value and its connections to qubits. 
     \item Performing a breadth-first traversal to find all non-isomorphic local complemented graphs. 
 \end{enumerate}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
