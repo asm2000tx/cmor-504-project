@@ -40,24 +40,24 @@ class result_generation:
         max_clique_model.optimize(G_comp) 
         clique_soln, _ = max_clique_model.opt_soln()    
 
-        print("\n" + "="*50)
-        print("RESULTS SUMMARY")
-        print("="*50)
+        # print("\n" + "="*50)
+        # print("RESULTS SUMMARY")
+        # print("="*50)
         
-        print("\n[1] Maximum Stable Set on Graph G:")
-        print(f"    Nodes: {mis_soln}")
+        # print("\n[1] Maximum Stable Set on Graph G:")
+        # print(f"    Nodes: {mis_soln}")
         
-        print("\n[2] Matchings on Graph G:")
-        print(f"    Edges: {match_soln}")
+        # print("\n[2] Matchings on Graph G:")
+        # print(f"    Edges: {match_soln}")
         
-        print("\n[3] Perfect Matching on G:")
-        print(f"    Edges: {perf_match_edges}")
-        print(f"    Solution: {perf_match_soln}")
+        # print("\n[3] Perfect Matching on G:")
+        # print(f"    Edges: {perf_match_edges}")
+        # print(f"    Solution: {perf_match_soln}")
         
-        print("\n[4] Maximum Clique on G:")
-        print(f"    Nodes: {clique_soln}")
+        # print("\n[4] Maximum Clique on G:")
+        # print(f"    Nodes: {clique_soln}")
         
-        print("\n" + "="*50 + "\n")
+        # print("\n" + "="*50 + "\n")
 
         self.mis_nodes.append(mis_soln)
         self.matching_edges.append(match_soln)

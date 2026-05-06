@@ -10,10 +10,11 @@ from data_generation import result_generation
 sys.setrecursionlimit(10**6)
 
 def main() -> int:
-    G = nx.erdos_renyi_graph(8, 0.55)
+    n, p = 9, 0.65
+    G = nx.erdos_renyi_graph(n, p)
 
     plot_graph = plot()
-    plot_graph.pyplot(G)
+    plot_graph.pyplot(G, n, p)
 
     mod_len = 10
     orbit_graph = orbit(mod_len)
@@ -26,8 +27,8 @@ def main() -> int:
     # print(f"\nFinal graph count: {len(graph_list)}")
 
     time_diff = (end - start)
-    if time_diff / 60 < 1: print(f"Time taken: {time_diff:.2f} seconds\n")
-    else: print(f"Time taken: {time_diff / 60:.2f} minutes\n")
+    if time_diff / 60 < 1: print(f"Time taken: {time_diff:.2f} seconds | Final graph count: {len(graph_list)}\n")
+    else: print(f"Time taken: {time_diff / 60:.2f} minutes | Final graph count: {len(graph_list)}\n")
 
     graph_count, rec_level = [], []
     for k in range(len(output_list)):

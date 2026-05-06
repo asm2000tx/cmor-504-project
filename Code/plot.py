@@ -6,7 +6,7 @@ class plot:
     def __init__(self):
         pass
         
-    def pyplot(self, G):
+    def pyplot(self, G, n, p):
         pos = nx.spring_layout(G, 2)
         nx.draw_networkx(
             G, pos, 
@@ -14,7 +14,7 @@ class plot:
             width=1.5
         )
 
-        plt.title(f"Graph Output")
+        plt.title(f"Graph Output - ($n = {n}, p = {p}$)")
         plt.show()
 
     def pyplot_append_caption_debug(self, G, lvl, v):
